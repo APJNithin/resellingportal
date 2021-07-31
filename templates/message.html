@@ -26,7 +26,14 @@
   padding: 5px;
   min-width: 400px;
   background-color: rgba(52, 183, 241,0.9);
+  color: #FFF
 }
+
+.message span {
+	font-size: 13px;
+	float:right;
+}
+
 @media(max-width:800px){
 .replay{
   position: absolute;
@@ -40,8 +47,16 @@
   margin:12px;
   padding: 5px;
   min-width: 400px;
-  background-color: rgba(52, 183, 241,0.9);
+  background-color: blueviolet;
+  color: #FFF;
 }
+
+.messageRight span {
+	font-size: 13px;
+	float:right;
+}
+
+
 .replay{
   position: absolute;
   bottom: 70px;
@@ -59,9 +74,9 @@
   <div class="chatBody">
     {% for i in messages %}
 <div class="message">
-  <h4>Sent By: {{ i.SendBy }}</h4>
-  <p>Message: {{ i.message }}</p>
-  <p>Date: {{ i.Date }}</p>
+  <span>{{ i.SendBy }}</span>
+  <h4>{{ i.message }}</h4>
+  <span>{{ i.Date.strftime('%d-%m-%y %H:%M') }}</span>
   
 </div>
 
@@ -69,9 +84,9 @@
 
 {% for i in send %}
 <div class="messageRight">
-  <h4>Sent To: {{ i.SendTo }}</h4>
-  <p>Message: {{ i.message }}</p>
-  <p>Date: {{ i.Date }}</p>
+  <span>{{ i.SendTo }}</span>
+  <h4>{{ i.message }}</h4>
+  <span>{{ i.Date.strftime('%d-%m-%y %H:%M') }}</span>
   
 </div>
 {% endfor %}
